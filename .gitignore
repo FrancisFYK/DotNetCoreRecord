@@ -14,7 +14,9 @@ bak.zip
 
 
 /Tools/*
+/Properties/*
 *.DotSettings
 .vs
 applicationhost.config
 packages/
+*.log
