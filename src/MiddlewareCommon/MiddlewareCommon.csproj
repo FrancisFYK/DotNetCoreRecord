@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.7" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0-msbuild3-final" />
   </ItemGroup>
 
 </Project>

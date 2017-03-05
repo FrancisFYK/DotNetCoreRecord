@@ -8,10 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MiddlewareCommon;
-using log4net;
-using System.IO;
-using log4net.Config;
-using log4net.Repository;
+using Microsoft.EntityFrameworkCore;
+using DotNetCoreRecord.Models;
 
 namespace DotNetCoreRecord
 {
@@ -36,6 +34,8 @@ namespace DotNetCoreRecord
         {
             // Add framework services.
             services.AddMvc();
+            var connection = @"Data Source=.;Initial Catalog=DotNetCoreRecord;Integrated Security=True";
+            services.AddDbContext<DotNetCoreRecordContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +55,7 @@ namespace DotNetCoreRecord
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.ApplicationServices.GetRequiredService<DotNetCoreRecordContext>().Database.Migrate();
             app.UseStaticFiles();
             app.UseRequestIP();//使用中间件
             app.UseMvc(routes =>

@@ -20,3 +20,4 @@ bak.zip
 applicationhost.config
 packages/
 *.log
+/src/DotNetCoreRecord/Migrations/*
